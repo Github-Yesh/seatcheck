@@ -1,0 +1,25 @@
+<!-- The photo and tap flow, drawn without photos of people. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 920" role="img" aria-labelledby="title description">
+<title id="title">How SeatCheck works</title>
+<desc id="description">Photo to body points to parent tap to mask, then cited rules, issue or looks right or cannot check, followed by manual cards and an inspection link. Numbers are unvalidated. Photos are processed on the local computer.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 1L8 5L0 9" fill="none" stroke="#24645d" stroke-width="2"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#193d38}.title{font-size:54px;font-weight:700}.subtitle{font-size:28px;fill:#47645f}.heading{font-size:32px;font-weight:700}.copy{font-size:26px}.note{font-size:25px;fill:#72521e}.box{fill:#fff;stroke:#b5cbc1;stroke-width:2}.arrow{fill:none;stroke:#24645d;stroke-width:4;marker-end:url(#arrow)}</style>
+<rect width="1800" height="920" fill="#f4f6f0"/>
+<text x="60" y="82" class="title">How SeatCheck works</text>
+<text x="60" y="132" class="subtitle">A parent-guided photo check, processed on the local computer</text>
+<!-- WHY: vectors and live text stay readable when we resize this for the video. -->
+<g><rect x="60" y="200" width="360" height="220" rx="22" class="box"/><text x="88" y="250" class="heading">1 · Photo</text><text x="88" y="300" class="copy">Choose one clear photo</text><text x="88" y="340" class="copy">of the buckled child.</text><text x="88" y="380" class="copy">Tap mode does not save it.</text></g>
+<path d="M430 310H476" class="arrow"/>
+<g><rect x="490" y="200" width="360" height="220" rx="22" class="box"/><text x="518" y="250" class="heading">2 · Body points</text><text x="518" y="300" class="copy">Pose estimates shoulders,</text><text x="518" y="340" class="copy">hips and elbows.</text><text x="518" y="380" class="copy">Parent reviews the dots.</text></g>
+<path d="M860 310H906" class="arrow"/>
+<g><rect x="920" y="200" width="360" height="220" rx="22" class="box"/><text x="948" y="250" class="heading">3 · Parent tap</text><text x="948" y="300" class="copy">Point to the requested</text><text x="948" y="340" class="copy">belt, clip or visible entry.</text><text x="948" y="380" class="copy">Skip hidden items.</text></g>
+<path d="M1290 310H1336" class="arrow"/>
+<g><rect x="1350" y="200" width="390" height="220" rx="22" class="box"/><text x="1378" y="250" class="heading">4 · Mask</text><text x="1378" y="300" class="copy">SAM highlights a region.</text><text x="1378" y="340" class="copy">Parent confirms, retaps</text><text x="1378" y="380" class="copy">or skips the outline.</text></g>
+<path d="M1545 434V505H1475V556" class="arrow"/>
+<g><rect x="1210" y="570" width="530" height="220" rx="22" class="box"/><text x="1240" y="620" class="heading">5 · Cited rules</text><text x="1240" y="665" class="copy">Compare confirmed items to body points.</text><text x="1240" y="705" class="copy">Why? links show official guidance.</text><text x="1240" y="750" class="note">Our numeric thresholds are UNVALIDATED.</text></g>
+<path d="M1196 680H1151" class="arrow"/>
+<g><rect x="635" y="570" width="500" height="220" rx="22" class="box"/><text x="665" y="620" class="heading">6 · Per-check results</text><text x="665" y="670" class="copy">Issue · Looks right · Can’t check</text><text x="665" y="715" class="copy">Only for the checks the photo supports.</text><text x="665" y="755" class="copy">No overall safety verdict.</text></g>
+<path d="M621 680H576" class="arrow"/>
+<g><rect x="60" y="570" width="500" height="220" rx="22" class="box"/><text x="90" y="620" class="heading">7 · Hands-on next steps</text><text x="90" y="670" class="copy">Manual-check cards for what is hidden.</text><text x="90" y="715" class="copy">NHTSA inspection-station link.</text><text x="90" y="755" class="copy">A photo cannot replace an inspection.</text></g>
+<text x="60" y="866" class="subtitle">Sources: app/core/pose.py · segment.py · rules.py · app/static/app.js · SPEC.md</text>
+</svg>

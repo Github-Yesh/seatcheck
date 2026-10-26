@@ -1,0 +1,11 @@
+# Keep local installs, photo outputs, and caches out of Git.
+__pycache__/
+*.pyc
+.venv/
+app/out/
+data/private/
+.DS_Store
+node_modules/
+.pytest_cache/
+*.pt
+*.onnx

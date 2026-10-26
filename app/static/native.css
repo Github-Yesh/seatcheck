@@ -1,0 +1,192 @@
+/* WHY: only normal mode loads these colors and layout rules; labeling keeps its stylesheet. */
+:root{--sc-bg:#f3f7f5;--sc-surface:#fff;--sc-raised:#e8f0ec;--sc-text:#163b35;--sc-muted:#52665f;--sc-brand:#19635a;--sc-on-brand:#fff;--sc-issue:#7b4a12;--sc-issue-bg:#fff3d9;--sc-good:#225d4b;--sc-good-bg:#e5f2e9;--sc-unknown:#475569;--sc-unknown-bg:#edf1f6;--sc-separator:#cedbd4;--sc-ease:cubic-bezier(.22,.75,.2,1);color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--sc-bg:#101b19;--sc-surface:#1b2c28;--sc-raised:#263c35;--sc-text:#eff7f3;--sc-muted:#b6c9c2;--sc-brand:#8ddbc8;--sc-on-brand:#102d25;--sc-issue:#f2c572;--sc-issue-bg:#352c1c;--sc-good:#9cdbb7;--sc-good-bg:#20372c;--sc-unknown:#c0cddd;--sc-unknown-bg:#28333f;--sc-separator:#40574e;color-scheme:dark}}
+body.native-mode{margin:0;background:var(--sc-bg);color:var(--sc-text);height:100dvh;overflow:hidden;overscroll-behavior:none;font-family:-apple-system,system-ui,sans-serif;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;--ink:var(--sc-text);--muted:var(--sc-muted);--teal:var(--sc-brand);--line:var(--sc-separator)}
+body.native-mode #nativeApp{width:100%;max-width:520px;height:100dvh;display:flex;flex-direction:column;margin:0 auto;padding:env(safe-area-inset-top) 0 0;overflow:hidden;background:var(--sc-bg);isolation:isolate;position:relative;font-size:17px;line-height:24px}
+body.native-mode #nativeApp *{box-sizing:border-box;min-width:0}
+body.native-mode #nativeApp :is(button,a,summary,input,select){min-height:44px;min-width:44px;font:inherit;-webkit-tap-highlight-color:transparent}
+body.native-mode #nativeApp :is(button,.button){display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;border-radius:16px;background:var(--sc-brand);color:var(--sc-on-brand);font-size:17px;line-height:24px;font-weight:600;padding:16px;box-shadow:none;cursor:pointer;transition:transform 120ms var(--sc-ease)}
+body.native-mode #nativeApp :is(button,.button):not(:disabled):active{transform:scale(.97)}
+body.native-mode #nativeApp button:disabled{opacity:1;background:var(--sc-raised);color:var(--sc-muted);cursor:default}
+body.native-mode #nativeApp :is(button,a,input,summary):focus-visible,body.native-mode #detailSheet :is(button,a,summary):focus-visible{outline:3px solid var(--sc-brand);outline-offset:3px}
+body.native-mode .sc-icon{width:24px;height:24px;flex:none;display:block}
+body.native-mode #nativeApp .app-nav{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:8px;flex:none;height:64px;padding:8px 16px;margin:0;border:0}
+body.native-mode #nativeApp .app-nav button{width:44px;height:44px;padding:8px;background:transparent;color:var(--sc-brand);border-radius:50%}
+body.native-mode #nativeApp #navBack[hidden]{display:block!important;visibility:hidden}
+body.native-mode #navTitle{text-align:center;font-size:17px;font-weight:600;letter-spacing:-.3px}
+body.native-mode #screenStack{flex:1;min-height:0;position:relative;overflow:hidden}
+body.native-mode .app-screen{position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden}
+body.native-mode .screen-content{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:16px 24px 24px;scroll-padding:16px}
+body.native-mode #nativeApp h1{font-size:34px;line-height:40px;letter-spacing:-1.1px;font-weight:750;margin:8px 0 16px}
+body.native-mode #nativeApp h2,body.native-mode #detailSheet h2{font-size:22px;line-height:28px;letter-spacing:-.5px;margin:0 0 8px}
+body.native-mode #nativeApp p{font-size:17px;line-height:24px;color:var(--sc-muted);margin:0 0 16px}
+body.native-mode #nativeApp .sc-eyebrow{font-size:13px;line-height:20px;font-weight:650;letter-spacing:1.2px;color:var(--sc-brand);margin:0 0 8px}
+body.native-mode #nativeApp .screen-intro{margin-bottom:24px}
+body.native-mode #nativeApp #message{flex:none;max-height:88px;overflow:auto;padding:8px 24px;margin:0;font-size:13px;line-height:20px;background:var(--sc-raised);color:var(--sc-text)}
+body.native-mode #nativeApp[data-busy=false] #message:not(.error),body.native-mode #nativeApp #message:empty{display:none}
+body.native-mode #nativeApp #message.error{background:var(--sc-issue-bg);color:var(--sc-issue)}
+body.native-mode #nativeApp #mainActionBar{display:block;position:relative;left:auto;right:auto;bottom:auto;flex:none;width:100%;z-index:2;border:0;background:var(--sc-bg);box-shadow:none;padding:16px 24px calc(16px + env(safe-area-inset-bottom));}
+body.native-mode #nativeApp #mainAction{width:100%;min-height:56px;margin:0}
+body.native-mode #nativeApp #mainAction .sc-icon{width:20px;height:20px}
+body.native-mode #nativeApp .home-content{text-align:center;display:flex;flex-direction:column;justify-content:center;padding-top:16px}
+body.native-mode .home-art{position:relative;display:grid;place-items:center;width:176px;height:176px;min-height:176px;margin:0 auto 16px;background:radial-gradient(ellipse,var(--sc-raised),transparent 70%)}
+body.native-mode .home-art img{width:88px;height:88px;border-radius:24px;z-index:1;box-shadow:0 16px 40px #082b2220}
+body.native-mode .orbit{position:absolute;width:128px;height:128px;border:1px solid var(--sc-separator);border-radius:40px;transform:rotate(-12deg)}
+body.native-mode .orbit-two{width:160px;height:160px;border-radius:48px;transform:rotate(12deg);opacity:.6}
+body.native-mode #nativeApp .home-purpose{max-width:330px;margin:0 auto 24px;color:var(--sc-muted)}
+body.native-mode #nativeApp .notice{font-size:13px;line-height:20px;border:1px solid var(--sc-separator);border-radius:16px;background:var(--sc-surface);color:var(--sc-muted);padding:16px;margin:0 0 16px;text-align:left}
+body.native-mode #nativeApp .notice::before{content:'UNVALIDATED PHOTO CHECKS';color:var(--sc-issue);font-size:13px;line-height:20px;letter-spacing:.4px;font-weight:650;margin-bottom:8px}
+body.native-mode #nativeApp #privacy{display:block;font-size:13px;line-height:20px;color:var(--sc-muted);margin:0 0 16px}
+body.native-mode .seat-choices{display:flex;flex-direction:column;gap:16px}
+body.native-mode #nativeApp .seat-choice{width:100%;min-height:128px;text-align:left;display:grid;grid-template-columns:64px 1fr 24px;gap:16px;padding:16px;background:var(--sc-surface);color:var(--sc-text);border:1px solid var(--sc-separator);border-radius:20px;}
+body.native-mode #nativeApp .seat-choice:hover{background:var(--sc-surface);color:var(--sc-text)}
+body.native-mode #nativeApp .seat-choice[aria-pressed=true]{border:2px solid var(--sc-brand);padding:15px;background:var(--sc-raised)}
+body.native-mode .seat-choice strong{display:block;font-size:17px;line-height:24px;font-weight:650}
+body.native-mode .seat-choice small{display:block;font-size:13px;line-height:20px;color:var(--sc-muted);margin-top:8px}
+body.native-mode .seat-art{display:grid;place-items:center;width:64px;height:80px;background:var(--sc-raised);border-radius:16px;color:var(--sc-brand)}
+body.native-mode .seat-illustration{width:56px;height:70px}
+body.native-mode .selection-mark{width:24px;height:24px;border:1px solid var(--sc-separator);border-radius:50%;color:transparent}
+body.native-mode .seat-choice[aria-pressed=true] .selection-mark{background:var(--sc-brand);color:var(--sc-on-brand);border-color:var(--sc-brand)}
+body.native-mode .selection-mark .sc-icon{width:22px;height:22px}
+body.native-mode .camera-art{min-height:160px;border:1px solid var(--sc-separator);border-radius:24px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;background:var(--sc-raised);color:var(--sc-brand);margin-bottom:16px}
+body.native-mode .camera-art>.sc-icon{width:48px;height:48px;stroke-width:1.4}
+body.native-mode .camera-art span{font-size:13px;line-height:20px;color:var(--sc-muted)}
+body.native-mode #nativeApp #chooseLibrary{width:100%;background:var(--sc-surface);color:var(--sc-brand);border-color:var(--sc-separator)}
+body.native-mode .framing-tips{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:16px;color:var(--sc-muted);font-size:17px;line-height:24px}
+body.native-mode .framing-tips li{display:flex;gap:16px;align-items:center}
+body.native-mode .framing-tips .sc-icon{color:var(--sc-brand)}
+body.native-mode .photo-stage{position:relative;flex:1;min-height:120px;overflow:hidden;background:var(--sc-raised)}
+body.native-mode #nativeApp #photoPanel{position:absolute;inset:0;max-width:none;border:0;border-radius:0;margin:0;background:transparent;overflow:hidden}
+body.native-mode .native-photo-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);overflow:hidden}
+body.native-mode #nativeApp #photo{display:block;width:100%;height:100%;border:0;margin:0;max-width:none;max-height:none}
+body.native-mode #photoDecoration{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+body.native-mode .scan-line{position:absolute;z-index:1;left:0;right:0;height:2px;top:0;background:var(--sc-brand);box-shadow:0 -16px 48px 8px #8ddbc855;animation:scan 2s ease-in-out infinite;pointer-events:none}
+body.native-mode #nativeApp[data-pose-ready=true] .scan-line{display:none}
+body.native-mode #nativeApp .bottom-sheet{flex:none;background:var(--sc-surface);border-radius:24px 24px 0 0;padding:8px 24px 0;position:relative;z-index:1;animation:sheet-rise 300ms cubic-bezier(.2,.8,.25,1.08);max-height:46%;overflow-y:auto;}
+body.native-mode .sheet-grip{width:32px;height:4px;border-radius:8px;background:var(--sc-separator);margin:0 auto 16px}
+body.native-mode #nativeApp .bottom-sheet p{font-size:13px;line-height:20px;margin-bottom:8px}
+body.native-mode #nativeApp #retakePhoto{background:transparent;color:var(--sc-brand);min-height:44px;padding:8px 16px;margin:0 0 0 -16px}
+body.native-mode #nativeApp[data-screen=analyze] #mainActionBar,body.native-mode #nativeApp[data-screen=tap] #mainActionBar{background:var(--sc-surface);padding-top:8px}
+body.native-mode .tap-toolbar{display:flex;gap:8px;flex-direction:column;align-items:center;padding:8px 24px 16px;background:var(--sc-bg);flex:none}
+body.native-mode #nativeApp #nativeProgress{font-size:13px;line-height:20px;color:var(--sc-muted);margin:0;letter-spacing:.6px}
+body.native-mode #instructionChip{background:var(--sc-surface);border:1px solid var(--sc-separator);border-radius:24px;padding:8px 16px;font-size:17px;line-height:24px;font-weight:600;text-align:center}
+body.native-mode .tap-secondary{display:flex;gap:8px;justify-content:space-between}
+body.native-mode #nativeApp .tap-secondary button{min-height:44px;padding:8px 16px;background:transparent;color:var(--sc-brand);flex:1;}
+body.native-mode #nativeApp #maskQuestion{font-size:17px;color:var(--sc-text);font-weight:600;background:var(--sc-raised);border:1px solid var(--sc-separator);padding:16px;border-radius:16px}
+body.native-mode .body-dot{fill:none;stroke:#fff;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:dot-in 300ms var(--sc-ease) both;animation-delay:calc(var(--i)*60ms)}
+body.native-mode .mask-outline{fill:none;stroke:#fff;stroke-width:2;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:0;animation:draw-mask 450ms var(--sc-ease)}
+body.native-mode .result-counts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 24px}
+body.native-mode .count-cell{border-radius:16px;padding:16px 8px;display:flex;flex-direction:column;text-align:center;background:var(--sc-unknown-bg);color:var(--sc-unknown)}
+body.native-mode .count-cell.issue{background:var(--sc-issue-bg);color:var(--sc-issue)}
+body.native-mode .count-cell.looks_right{background:var(--sc-good-bg);color:var(--sc-good)}
+body.native-mode .count-cell strong{font-size:28px;line-height:32px;font-weight:700}
+body.native-mode .count-cell span{font-size:13px;line-height:20px;margin-top:8px}
+body.native-mode #nativeApp .result-card{margin:0 0 16px;padding:16px;border:1px solid var(--sc-separator);border-radius:20px;background:var(--sc-surface);box-shadow:none}
+body.native-mode #nativeApp .native-result{animation:card-in 300ms var(--sc-ease) both;animation-delay:calc(var(--i)*60ms)}
+body.native-mode #nativeApp .result-open,body.native-mode #nativeApp .result-open:hover{display:flex;gap:16px;align-items:flex-start;background:transparent;color:var(--sc-text);padding:0;border:0;text-align:left;width:100%;border-radius:8px}
+body.native-mode .result-icon{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:12px;background:var(--sc-unknown-bg);color:var(--sc-unknown)}
+body.native-mode .issue .result-icon{background:var(--sc-issue-bg);color:var(--sc-issue)}
+body.native-mode .looks_right .result-icon{background:var(--sc-good-bg);color:var(--sc-good)}
+body.native-mode .result-copy{display:block;flex:1}
+body.native-mode #nativeApp .result-card h3{font-size:17px;line-height:24px;margin:8px 0;font-weight:650;letter-spacing:-.3px;color:var(--sc-text)}
+body.native-mode #nativeApp .result-card p{font-size:17px;line-height:24px;color:var(--sc-muted);margin:0 0 8px}
+body.native-mode #nativeApp .result-card .status{background:none;border:0;padding:0;min-height:0;font-size:13px;line-height:20px;color:var(--sc-unknown);letter-spacing:0;font-weight:650}
+body.native-mode #nativeApp .issue .status{color:var(--sc-issue)}
+body.native-mode #nativeApp .looks_right .status{color:var(--sc-good)}
+body.native-mode #nativeApp .unvalidated{font-size:13px;line-height:20px;font-weight:600;color:var(--sc-issue);margin:8px 0 0;display:block}
+body.native-mode #nativeApp .result-card .why{border-top:1px solid var(--sc-separator);margin-top:8px;padding:0;font-size:13px;color:var(--sc-muted)}
+body.native-mode #nativeApp .result-card .why summary{color:var(--sc-brand);font-size:13px;line-height:20px;min-height:44px;padding:8px 0;text-decoration:none}
+body.native-mode #nativeApp .result-card .why a{color:var(--sc-brand);min-height:44px;display:inline-flex;align-items:center}
+body.native-mode #nativeApp :is(.results-content,.next-content){-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
+body.native-mode #nativeApp .result-limit{font-size:13px;line-height:20px;text-align:center;margin:8px 0 0;color:var(--sc-muted)}
+body.native-mode #nativeApp #manualChecklist{padding:0 16px;margin:0 0 24px;border:1px solid var(--sc-separator);border-radius:20px;background:var(--sc-surface)}
+body.native-mode #nativeApp #manualChecklist>summary{font-size:17px;line-height:24px;padding:16px 0;min-height:56px;font-weight:600;color:var(--sc-text);cursor:pointer}
+body.native-mode #nativeApp #manualCards .result-card{border:0;border-top:1px solid var(--sc-separator);padding:16px 0;background:transparent;border-radius:0;margin:0}
+body.native-mode #nativeApp #manualCards .result-card h3{font-size:17px;margin:0 0 8px}
+body.native-mode #nativeApp #manualCards .result-card p,body.native-mode #nativeApp #manualCards .result-card li{font-size:13px;line-height:20px;color:var(--sc-muted)}
+body.native-mode #nativeApp #coatPanel{padding:16px;margin:0 0 24px;border:1px solid var(--sc-separator);border-radius:20px;background:var(--sc-surface)}
+body.native-mode #nativeApp #coatPanel h2{font-size:17px;line-height:24px}
+body.native-mode #nativeApp #coatPanel button{margin:8px 8px 0 0;padding:8px 24px;min-height:44px;background:var(--sc-raised);color:var(--sc-brand);border:1px solid var(--sc-separator)}
+body.native-mode #nativeApp #coatPanel button[aria-pressed=true]{background:var(--sc-brand);color:var(--sc-on-brand);border-color:var(--sc-brand)}
+body.native-mode #nativeApp #coatReminder .result-card{border:0;padding:16px 0 0;margin:0}
+body.native-mode #nativeApp #coatReminder .result-card p{font-size:13px;line-height:20px}
+body.native-mode #nativeApp .inspection-block{padding:0;margin-bottom:24px}
+body.native-mode #nativeApp .inspection-block p,body.native-mode #nativeApp #inspectionZipNote{font-size:13px;line-height:20px;text-align:left;padding:0;color:var(--sc-muted)}
+body.native-mode #nativeApp .inspection-zip label{font-size:13px;line-height:20px;margin:16px 0 8px;color:var(--sc-muted)}
+body.native-mode #nativeApp #inspectionZip{background:var(--sc-surface);color:var(--sc-text);border:1px solid var(--sc-separator);font:inherit;border-radius:12px;margin-bottom:8px;padding:16px;min-height:56px}
+body.native-mode #nativeApp #inspectionLink{font-size:13px;line-height:20px;margin:0 0 8px;padding:8px 0;justify-content:flex-start;text-align:left;background:transparent;color:var(--sc-brand);border:0;border-radius:8px;min-height:44px;text-decoration:underline}
+body.native-mode #nativeApp #newPhoto{width:100%;background:var(--sc-surface);color:var(--sc-brand);border:1px solid var(--sc-separator);margin:0}
+body.native-mode #detailSheet{position:fixed;inset:auto 0 0;width:100%;max-width:520px;max-height:88dvh;margin:0 auto;padding:24px 24px calc(24px + env(safe-area-inset-bottom));border:1px solid var(--sc-separator);border-radius:24px 24px 0 0;background:var(--sc-surface);color:var(--sc-text);font:17px/24px -apple-system,system-ui,sans-serif;overflow-y:auto;overscroll-behavior:contain;-webkit-user-select:text;user-select:text;}
+body.native-mode #detailSheet[open]{animation:sheet-rise 300ms cubic-bezier(.2,.8,.25,1.08)}
+body.native-mode #detailSheet::backdrop{background:#071b1877;backdrop-filter:blur(4px)}
+body.native-mode .dialog-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin:0 0 16px}
+body.native-mode #detailSheet #closeDetails{min-width:44px;min-height:44px;border:0;border-radius:50%;padding:10px;background:var(--sc-raised);color:var(--sc-brand)}
+body.native-mode #detailSheet .result-card{border:0;background:transparent;margin:0;padding:0;box-shadow:none;overflow-wrap:anywhere;color:var(--sc-text)}
+body.native-mode #detailSheet :is(p,li){font-size:17px;line-height:24px;color:var(--sc-muted)}
+body.native-mode #detailSheet .status{color:var(--sc-unknown);background:var(--sc-unknown-bg)}
+body.native-mode #detailSheet .issue .status{color:var(--sc-issue);background:var(--sc-issue-bg)}
+body.native-mode #detailSheet .looks_right .status{color:var(--sc-good);background:var(--sc-good-bg)}
+body.native-mode #detailSheet .unvalidated{display:block;font-size:13px;color:var(--sc-issue);margin:16px 0}
+body.native-mode #detailSheet :is(summary,a){font-size:17px;line-height:24px;min-height:44px;min-width:44px;display:flex;align-items:center;color:var(--sc-brand);padding:8px 0}
+body.native-mode #detailSheet .notice{background:var(--sc-issue-bg);color:var(--sc-issue);border-color:var(--sc-separator)}
+body.native-mode #detailSheet .notice::before{color:var(--sc-issue)}
+body.native-mode #detailSheet .privacy{color:var(--sc-muted)}
+@keyframes scan{from{top:0;opacity:0}20%{opacity:1}80%{opacity:1}to{top:100%;opacity:0}}
+@keyframes dot-in{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes draw-mask{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes sheet-rise{from{transform:translateY(32px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes card-in{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes push-in{from{transform:translateX(24px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes pop-in{from{transform:translateX(-24px);opacity:0}to{transform:translateX(0);opacity:1}}
+body.native-mode .screen-enter{animation:push-in 300ms var(--sc-ease)}
+:root.sc-view-transitions .screen-enter{animation:none}
+body.native-mode [data-direction=back] #screenStack>.screen-enter{animation-name:pop-in}
+::view-transition-old(root){animation:300ms var(--sc-ease) both leave-forward}
+::view-transition-new(root){animation:300ms var(--sc-ease) both enter-forward}
+:root[data-sc-direction=back]::view-transition-old(root){animation-name:leave-back}
+:root[data-sc-direction=back]::view-transition-new(root){animation-name:enter-back}
+@keyframes leave-forward{to{transform:translateX(-12%);opacity:0}}
+@keyframes enter-forward{from{transform:translateX(16%);opacity:0}}
+@keyframes leave-back{to{transform:translateX(12%);opacity:0}}
+@keyframes enter-back{from{transform:translateX(-16%);opacity:0}}
+@media(prefers-reduced-motion:reduce){body.native-mode *,body.native-mode *::before,body.native-mode *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}body.native-mode .scan-line{display:none}::view-transition-old(root),::view-transition-new(root){animation:none!important}}
+@media(max-height:700px){body.native-mode .home-art{height:128px;min-height:128px;margin-bottom:16px}body.native-mode .orbit-one{width:112px;height:112px}body.native-mode .orbit-two{width:144px;height:144px}body.native-mode #nativeApp .home-content{justify-content:flex-start}body.native-mode #nativeApp .bottom-sheet{max-height:44%}}
+
+/* WHY: focus the heading so it gets announced, without drawing a button-style outline around it. */
+body.native-mode #nativeApp :is(h1,h2):focus{outline:none}
+body.native-mode #instructionChip:focus{outline:none}
+body.native-mode #nativeApp .result-open p{font-weight:400}
+
+body.native-mode #nativeApp .result-copy{-webkit-user-select:text;user-select:text}
+
+/* WHY: keep raw numbers tucked away until asked for, and let them wrap on a narrow phone. */
+body.native-mode #detailSheet .measurement-copy{color:var(--sc-text)}
+body.native-mode #detailSheet .technical-details pre{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/20px ui-monospace,monospace;color:var(--sc-muted);margin:8px 0}
+body.native-mode #detailSheet .technical-details>summary::after{content:'+'}
+body.native-mode #detailSheet .technical-details[open]>summary::after{content:'−'}
+
+/* WHY: X-ray draws existing results; it does not take part in measuring the photo. */
+body.native-mode #nativeApp .xray-toggle{width:100%;min-height:48px;margin:0 0 16px;background:var(--sc-surface);color:var(--sc-brand);border:1px solid var(--sc-separator)}
+body.native-mode #nativeApp .xray-toggle[aria-pressed=true]{background:var(--sc-raised);border-color:var(--sc-brand)}
+body.native-mode .xray-view{border:1px solid var(--sc-separator);border-radius:20px;overflow:hidden;margin:0 0 24px;background:var(--sc-surface)}
+body.native-mode #nativeApp :is(.xray-note,.xray-key,.xray-reference){font-size:13px;line-height:20px;margin:0;padding:16px;color:var(--sc-muted)}
+body.native-mode .xray-frame{position:relative;isolation:isolate;background:#163b35}
+body.native-mode .xray-frame img{display:block;width:100%;height:auto}
+body.native-mode .xray-frame :is(canvas,svg){position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+body.native-mode .xray-frame svg{overflow:hidden}
+body.native-mode .xray-skeleton{stroke-width:2;opacity:.9;filter:drop-shadow(0 1px 1px #102d25)}
+body.native-mode .xray-dot{fill:#c6efff;stroke:#102d25;stroke-width:1;transform-box:fill-box;transform-origin:center;animation:xray-pop 350ms ease-out both}
+body.native-mode .xray-label{fill:#fff;color:#fff;stroke:#102d25;stroke-width:3;paint-order:stroke;stroke-linejoin:round;font-weight:650}
+body.native-mode .xray-reference-line{stroke-width:2;filter:drop-shadow(0 1px 1px #102d25)}
+body.native-mode .xray-zone{stroke-width:10;opacity:.7}
+body.native-mode .xray-connector{stroke:#fff;stroke-width:1;stroke-dasharray:3 3}
+body.native-mode .xray-measure{stroke-width:2.5;filter:drop-shadow(0 1px 1px #102d25)}
+body.native-mode .xray-number-dot{fill:#102d25;stroke:#fff;stroke-width:1}
+body.native-mode .xray-line{stroke-dasharray:1;animation:xray-draw 600ms var(--sc-ease) both}
+body.native-mode #nativeApp .xray-reading{padding:16px;border-bottom:1px solid var(--sc-separator)}
+body.native-mode #nativeApp .xray-reading h3{font-size:17px;line-height:24px;margin:0 0 8px}
+body.native-mode #nativeApp .xray-reading p{font-size:13px;line-height:20px;margin:0}
+body.native-mode #nativeApp .xray-reading .xray-reference{padding:8px 0 0}
+@keyframes xray-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes xray-pop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){body.native-mode :is(.xray-line,.xray-dot){animation:none}}

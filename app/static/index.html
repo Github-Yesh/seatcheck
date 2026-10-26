@@ -1,0 +1,79 @@
+<!-- Page controls and local scripts, with no frontend build step. -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SeatCheck · Photo checks</title><link rel="stylesheet" href="/static/style.css">
+  <!-- WHY: the Home Screen icon still needs the local server; we do not cache photos for offline use. -->
+  <link rel="manifest" href="/static/manifest.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="SeatCheck">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#19635a">
+  <script src="/static/result_copy.js" defer></script>
+  <script src="/static/errors.js" defer></script>
+  <script src="/static/app.js" defer></script>
+  <script src="/static/manual_guidance.js" defer></script>
+  <script src="/static/parent_ux.js" defer></script>
+  <script src="/static/user_test.js" defer></script>
+  <script src="/static/inspection.js" defer></script>
+</head>
+<body>
+<main>
+  <header><a class="brand" href="/">SeatCheck<span class="brand-dot"></span></a><span class="eyebrow">TAP MODE · V1 PROTOTYPE</span></header>
+  <section class="intro"><h1>A closer look.<br>A better next step.</h1><p>Tap the belt or harness. Review what the photo can show—and what needs a hands-on check.</p></section>
+  <p class="notice">Photo thresholds are unvalidated. Follow your seat manual and get a certified inspection.</p>
+  <p class="privacy" id="privacy">Your photo goes to the computer running SeatCheck for in-memory processing. Tap mode does not save it.</p>
+  <nav aria-label="Progress"><span id="stepPhoto" class="active">1 · Photo</span><span id="stepTap">2 · Tap & confirm</span><span id="stepResults">3 · Review</span></nav>
+
+  <section id="setup" class="card">
+    <h2>Start with a clear photo</h2><p>Show one child, both shoulders and hips. Stay parked while taking the photo.</p>
+    <div class="upload-row"><label class="button" for="photoInput">Choose a photo</label><label class="button secondary" for="cameraInput">Take a photo</label></div>
+    <input id="photoInput" type="file" accept="image/*" class="file-input"><input id="cameraInput" type="file" accept="image/*" capture="environment" class="file-input">
+    <label for="seatType">Seat type</label><select id="seatType"><option value="rear">Rear-facing harness</option><option value="forward">Forward-facing harness</option><option value="booster">Booster or seat belt</option></select>
+    <button id="poseButton" disabled>Find body points</button>
+  </section>
+
+  <p id="message" role="status" aria-live="polite"></p>
+  <section id="photoPanel" class="photo-panel" hidden><canvas id="photo" aria-label="Photo with estimated body points and tapped mask"></canvas><p class="caption">L / R mark the child's left / right shoulder. Dots are estimates.</p></section>
+  <section id="posePanel" class="card" hidden><h2>Check the body points</h2><p id="poseNote">The shoulder and hip dots should belong to the child. If they don't, choose another photo.</p><button id="startTaps">Continue to taps</button></section>
+  <section id="tapPanel" class="card" hidden>
+    <span class="eyebrow" id="tapCount"></span><h2 id="tapTitle"></h2><p id="tapHelp"></p>
+    <p id="suggestionNote" hidden></p><button id="useSuggestion" class="secondary" hidden>Use proposed point</button>
+    <p id="maskQuestion" hidden>Does the highlight follow the intended item, and is your tap on the requested point? If it selects something else, retap or skip.</p>
+    <div class="actions"><button id="confirmMask" disabled>Confirm item & tap</button><button id="retap" class="secondary" hidden>Retap</button><button id="skip" class="text-button">Can't see it · skip</button></div>
+  </section>
+
+  <section id="results" hidden>
+    <div class="section-heading"><span class="eyebrow">PHOTO CHECKS</span><h2 id="resultTitle">Review this photo</h2></div>
+    <p>Each result applies only to the visible item you confirmed. A photo does not replace an inspection.</p>
+    <div id="visualCards"></div>
+    <div class="section-heading"><h2>Checks I can't verify from a photo</h2></div><div id="manualCards"></div>
+    <a id="inspectionLink" class="button inspection" target="_blank" rel="noopener noreferrer" href="https://www.nhtsa.gov/vehicle-safety/car-seats-and-booster-seats#installation-help-inspection">Get a free inspection ↗</a><p class="caption">Find a child passenger inspection station through NHTSA.</p>
+  </section>
+
+  <section id="labelPanel" class="card" hidden>
+    <span class="eyebrow">LABELING MODE · LOCAL DATASET</span><h2>Save only with permission</h2>
+    <p>This mode saves the photo, taps, masks and body points on this computer. Use aliases, not names. Held-out kill-test photos cannot be saved here.</p>
+    <form id="labelForm">
+      <label for="carId">Car ID</label><input id="carId" name="car_id" placeholder="car_01" required maxlength="64" pattern="[A-Za-z0-9_-]+">
+      <label for="split">Dataset split</label><select id="split" name="split" required><option value="">Choose train or test</option><option value="train">Train — Car 1 / Car 3</option><option value="test">Test — Car 2 (held out)</option></select>
+      <p>Keep every photo of the same car in the same split. Test photos never train the model.</p>
+      <label for="seatId">Seat ID</label><input id="seatId" name="seat_id" placeholder="seat_01" required maxlength="64" pattern="[A-Za-z0-9_-]+">
+      <label for="subjectId">Subject alias</label><input id="subjectId" name="subject_id" placeholder="child_01 / doll / tester_01" required maxlength="64" pattern="[A-Za-z0-9_-]+">
+      <label for="lighting">Lighting</label><select id="lighting" name="lighting"><option>daylight</option><option>shade</option><option>interior light</option><option>night</option><option>other</option></select>
+      <label for="mistake">Deliberate mistake / setup code</label><select id="mistake" name="deliberate_mistake" required>
+        <option value="">Choose a setup</option>
+        <optgroup label="Booster / seat belt"><option>B1</option><option>B2</option><option>B3</option><option>B4</option><option>B5</option><option>B6</option><option>B7</option><option>B8</option><option>B9</option><option>B10</option></optgroup>
+        <optgroup label="Harness"><option>H1</option><option>H2</option><option>H3</option><option>H4</option><option>H5</option><option>H6</option><option>H7</option><option>H8</option><option>H9</option></optgroup><option value="other">other</option>
+      </select><p>B codes: booster / seat belt. H codes: harness. Use the photo-day checklist, including its intended-baseline setups.</p>
+      <label class="consent"><input id="consent" type="checkbox" required> I have permission to save this photo and its annotations locally for this dataset.</label>
+      <button id="saveLabels" type="submit">Save labeling session</button><p id="saveStatus" role="status"></p>
+    </form>
+  </section>
+  <button id="newPhoto" class="secondary" hidden>Start another photo</button>
+  <footer>SeatCheck · A student-built photo-checking prototype.<br>Manual checks and certified help are always part of the next step.</footer>
+</main>
+</body></html>

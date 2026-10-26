@@ -1,0 +1,111 @@
+/* Base layout and touch targets, shared with the labeling page. */
+:root{--ink:#173a38;--teal:#15675f;--paper:#f5f4ee;--line:#d9e2dc;--muted:#546963;--amber:#7b4a12;--orange:#b04e24}
+/* WHY: WebKit kept selects at 25px despite min-height, so give fingers a bigger target. */
+select{-webkit-appearance:none;appearance:none;height:48px;min-width:0;padding-right:36px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2315675f' stroke-width='2'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 12px center!important}
+/* WHY: even a 64-character car alias has to fit in the save receipt. */
+#message,#saveStatus{overflow-wrap:anywhere}
+/* WHY: a small Why link still needs enough room for a finger. */
+.result-card .why summary{display:flex;align-items:center;min-height:44px;font-size:13px;color:var(--teal);text-decoration:underline}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:17px;line-height:1.55}main{max-width:720px;margin:auto;padding:24px 20px 40px}header{display:flex;justify-content:space-between;align-items:center;gap:15px;padding-bottom:24px}.brand{font-weight:800;font-size:24px;color:var(--ink);text-decoration:none;letter-spacing:-1px;white-space:nowrap}.brand-dot{display:inline-block;width:8px;height:8px;background:#d39e4f;border-radius:100%;margin-left:4px}.eyebrow{font-size:10px;font-weight:750;letter-spacing:1.4px;color:var(--muted)}header .eyebrow{text-align:right;max-width:100px}.intro h1{font-size:clamp(36px,7vw,52px);line-height:1.08;letter-spacing:-1.8px;margin:14px 0 18px}.intro p{max-width:510px;color:var(--muted)}.notice{border-left:3px solid #c4994b;background:#eee8d8;color:#655027;padding:12px 14px;font-size:14px;border-radius:0 8px 8px 0}.privacy{font-size:13px;color:var(--muted)}nav{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);margin:26px 0 22px;font-size:12px;gap:8px}nav span{padding:0 0 12px;color:var(--muted)}nav .active{color:var(--teal);font-weight:750;border-bottom:3px solid var(--teal)}h2{font-size:23px;line-height:1.25;letter-spacing:-.6px;margin:8px 0 12px}p{margin:10px 0 18px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:22px;margin:18px 0}.card>p{color:var(--muted);font-size:15px}.upload-row,.actions{display:flex;flex-wrap:wrap;gap:10px}.button,button{display:inline-flex;justify-content:center;align-items:center;text-align:center;min-height:48px;padding:12px 18px;border:1px solid var(--teal);border-radius:10px;font-size:16px;font-family:inherit;font-weight:650;text-decoration:none;background:var(--teal);color:white;cursor:pointer;line-height:1.35}.secondary{background:transparent;color:var(--teal);border-color:#b7cac2}.text-button{background:none;border-color:transparent;color:var(--muted);font-size:14px}button:disabled{opacity:.45;cursor:wait}label{display:block;font-size:14px;font-weight:650;margin:20px 0 8px}.upload-row label{margin:0}.file-input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}select,input:not([type=checkbox]):not(.file-input){display:block;width:100%;border:1px solid #bccbc3;border-radius:9px;background:#fafbf8;color:var(--ink);padding:12px;font:inherit;margin-bottom:14px;min-height:48px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #d8a74b;outline-offset:3px}#poseButton,#startTaps,#saveLabels{width:100%;margin-top:10px}.photo-panel{background:#e6ebe4;border-radius:14px;overflow:hidden;margin:18px 0}canvas{display:block;width:100%;height:auto;touch-action:manipulation;cursor:crosshair}.caption{padding:0 12px;color:var(--muted);font-size:12px;text-align:center}.section-heading{margin-top:32px}#message{font-size:15px;color:var(--teal);min-height:1px}#message.error{color:#963e25}#maskQuestion{font-weight:600;color:var(--ink)}.status{display:inline-block;padding:4px 9px;border-radius:5px;font-size:11px;font-weight:750;letter-spacing:.6px;background:#edf0eb;color:#51645d}.issue .status{background:#fae9dc;color:#903d1c}.looks_right .status{background:#dfece7;color:#225d4b}.result-card{margin-top:12px}.result-card h3{font-size:18px;margin:12px 0 7px}.result-card p{font-size:15px;color:var(--muted);margin-bottom:10px}.result-card details{font-size:12px;color:var(--muted);overflow-wrap:anywhere}.result-card summary{cursor:pointer;padding:8px 0}details a{color:var(--teal)}.inspection{width:100%;margin-top:24px}.consent{display:flex;gap:12px;align-items:flex-start;font-weight:400}.consent input{min-width:22px;height:22px;margin:2px 0}#newPhoto{width:100%;margin-top:22px}footer{font-size:12px;color:var(--muted);margin-top:40px;border-top:1px solid var(--line);padding-top:20px}body.label-mode .brand-dot{background:var(--orange)}[hidden]{display:none!important}@media(min-width:600px){main{padding:34px 30px 60px}.card{padding:28px}.intro{padding:10px 0}.photo-panel{max-width:600px;margin:20px auto}}@media(max-width:380px){main{padding-left:14px;padding-right:14px}.button,button{font-size:14px;padding:12px}.card{padding:18px}}
+
+/* WHY: UI v2 uses our own CSS for those component ideas; labeling keeps its original styles. */
+body:not(.label-mode){--ink:#163b35;--teal:#19635a;--paper:#f7f8f5;--line:#dce5df;--muted:#52665f;background:var(--paper);font-size:17px;line-height:1.55}
+body:not(.label-mode) main{max-width:720px;padding:18px 20px 36px}
+body:not(.label-mode) header{padding:0 0 20px;border:0;gap:16px}
+body:not(.label-mode) .brand{display:inline-flex;align-items:center;gap:9px;font-size:23px;letter-spacing:-.9px}
+body:not(.label-mode) .brand::before{content:'';width:34px;height:34px;flex:none;background:url('/static/icon.svg') center/cover;border-radius:10px}
+body:not(.label-mode) .brand-dot{display:none}
+body:not(.label-mode) header .eyebrow{font-size:9px;line-height:1.55;letter-spacing:1.2px;color:var(--muted);max-width:108px;border-left:1px solid #cbd9d0;padding-left:12px}
+body:not(.label-mode) .intro{padding:0 0 3px}
+body:not(.label-mode) .intro h1{font-size:clamp(34px,9.2vw,48px);line-height:1.08;letter-spacing:-1.65px;font-weight:750;margin:13px 0 15px;text-wrap:balance}
+body:not(.label-mode) .intro p{font-size:16px;line-height:1.55;color:var(--muted);margin:0 0 20px;max-width:510px}
+/* WHY: calm colors should not bury the prototype warning. */
+body:not(.label-mode) .notice{background:#fff5df;color:#66491c;border:1px solid #e8d9b5;border-left:3px solid #a5772d;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.5;margin:0 0 14px}
+body:not(.label-mode) .notice::before{content:'PROTOTYPE · UNVALIDATED';display:block;font-size:10px;font-weight:750;letter-spacing:1px;margin-bottom:5px}
+body:not(.label-mode) .privacy{font-size:12px;line-height:1.65;color:#52665f;margin:0 3px 19px}
+/* WHY: these pills show progress; they are not extra navigation buttons. */
+body:not(.label-mode) nav{display:grid;grid-template-columns:.92fr 1.3fr .9fr;gap:3px;border:1px solid var(--line);background:#edf1ed;border-radius:14px;padding:4px;margin:0 0 20px;font-size:11px}
+body:not(.label-mode) nav span{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:9px 5px;border:0;border-radius:10px;color:#52665f;white-space:nowrap}
+body:not(.label-mode) nav .active{background:#fff;color:#174e44;font-weight:750;box-shadow:0 2px 5px #173b3510;border:1px solid #d8e4dc}
+body:not(.label-mode) nav .active::before{content:'';width:5px;height:5px;border-radius:50%;background:#19635a;flex:none}
+body:not(.label-mode) h2{font-size:22px;line-height:1.25;letter-spacing:-.7px;margin:0 0 10px}
+body:not(.label-mode) .card{border:1px solid #dce5df;background:#fff;border-radius:20px;padding:21px 20px;margin:16px 0;box-shadow:0 3px 14px #173b3505}
+body:not(.label-mode) .card>p{font-size:15px;line-height:1.6;color:var(--muted);margin:8px 0 18px}
+body:not(.label-mode) #setup{margin-top:0}
+body:not(.label-mode) .upload-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:19px 0 22px}
+body:not(.label-mode) .button,body:not(.label-mode) button{min-height:52px;padding:13px 16px;border:1px solid #19635a;border-radius:12px;background:#19635a;color:#fff;font-size:15px;line-height:1.4;font-weight:650;box-shadow:inset 0 1px #ffffff15,0 2px 3px #163b3509;transition:background-color .15s}
+body:not(.label-mode) .upload-row label{margin:0;font-size:14px;padding:13px 6px}
+body:not(.label-mode) .secondary{background:#fff;color:#174e44;border:1px solid #c6d7cd;box-shadow:0 1px 2px #163b3505}
+body:not(.label-mode) .text-button{color:#52665f;background:#f0f4f0;border-color:#e0e8e2;box-shadow:none;font-size:14px}
+body:not(.label-mode) button:not(:disabled):hover,body:not(.label-mode) a.button:hover,body:not(.label-mode) .upload-row label:hover{background:#124b43;color:#fff}
+body:not(.label-mode) button:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
+body:not(.label-mode) label{font-size:13px;font-weight:650;color:#254d43;margin:18px 0 8px}
+body:not(.label-mode) select{height:50px;min-height:50px;border-color:#cfddd3;border-radius:11px;background-color:#fafcf9;font-size:16px;color:#254d43;margin-bottom:12px}
+body:not(.label-mode) #poseButton{margin-top:8px}
+body:not(.label-mode) #message{font-size:14px;line-height:1.6;margin:16px 2px;overflow-wrap:anywhere}
+body:not(.label-mode) #message:empty{margin:0;min-height:0}
+body:not(.label-mode) .photo-panel{border:1px solid #d6e2d9;border-radius:18px;background:#e9f0ea;margin:20px 0}
+body:not(.label-mode) .caption{font-size:12px;line-height:1.6;margin:10px 0;padding:0 14px;color:var(--muted)}
+body:not(.label-mode) #posePanel{border-top:3px solid #6d9985}
+body:not(.label-mode) #tapPanel .eyebrow{display:block;color:#52665f;letter-spacing:1.1px;font-size:10px;margin-bottom:10px}
+body:not(.label-mode) #maskQuestion{background:#f0f6f1;border:1px solid #d8e4da;border-radius:12px;padding:13px;font-size:15px;font-weight:500;line-height:1.6}
+/* WHY: keep the actions together in the layout so they do not cover the photo or instructions. */
+body:not(.label-mode) .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:13px 0 0;margin:18px 0 0;border-top:1px solid var(--line)}
+body:not(.label-mode) #confirmMask{grid-column:1/-1}
+body:not(.label-mode) #tapPanel{padding-bottom:max(20px,env(safe-area-inset-bottom))}
+body:not(.label-mode) .section-heading{margin:30px 0 14px}
+body:not(.label-mode) .section-heading .eyebrow{font-size:10px;letter-spacing:1.4px;color:#52665f}
+body:not(.label-mode) .section-heading h2{font-size:26px;line-height:1.2;margin-top:8px;letter-spacing:-.8px}
+body:not(.label-mode) #results>.section-heading~p{font-size:15px;line-height:1.6;color:var(--muted)}
+/* WHY: spell out the status too; an edge color alone does not explain a result. */
+body:not(.label-mode) .result-card{border-left:4px solid #a9b9bd;margin:14px 0;padding:20px}
+body:not(.label-mode) .result-card.issue{border-left-color:#a97835}
+body:not(.label-mode) .result-card.looks_right{border-left-color:#60876f}
+body:not(.label-mode) .result-card .status{display:inline-flex;align-items:center;min-height:26px;padding:5px 9px;border-radius:7px;font-size:10px;line-height:1.4;letter-spacing:.7px;background:#eef2f3;color:#455d66;border:1px solid #dce5e7;max-width:100%}
+body:not(.label-mode) .issue .status{background:#fff3df;color:#78501e;border-color:#ead9b9}
+body:not(.label-mode) .looks_right .status{background:#edf5ee;color:#2c5d43;border-color:#d7e6d8}
+body:not(.label-mode) .result-card h3{font-size:20px;line-height:1.3;letter-spacing:-.45px;margin:13px 0 9px}
+body:not(.label-mode) .result-card p{font-size:15px;line-height:1.65;color:#52665f;margin:8px 0 14px}
+body:not(.label-mode) .result-card details{font-size:13px;line-height:1.65;border-top:1px solid #e1e8e3;margin-top:10px;overflow-wrap:anywhere}
+body:not(.label-mode) .result-card details p{font-size:13px}
+body:not(.label-mode) .result-card .why summary{display:flex;justify-content:space-between;min-height:48px;font-size:14px;font-weight:650;color:#19635a;text-underline-offset:4px}
+body:not(.label-mode) .result-card .why summary::after{content:'+';font-size:20px;font-weight:400;text-decoration:none}
+body:not(.label-mode) .result-card .why[open] summary::after{content:'−'}
+body:not(.label-mode) .result-card .why[open]{padding-bottom:8px}
+body:not(.label-mode) #manualCards .result-card{background:#f2f5f1;box-shadow:none}
+body:not(.label-mode) .inspection{margin-top:24px;min-height:56px}
+body:not(.label-mode) #newPhoto{background:#fff;color:#174e44;border-color:#c6d7cd;margin-top:24px}
+body:not(.label-mode) footer{font-size:12px;line-height:1.7;color:#52665f;margin-top:28px;padding-top:18px;border-color:#dce5df}
+body:not(.label-mode) :is(button,a,input,select,summary):focus-visible{outline:3px solid #9a6b24;outline-offset:4px}
+@media(min-width:600px){body:not(.label-mode) main{padding:30px 30px 56px}body:not(.label-mode) .intro{padding:16px 0 6px}body:not(.label-mode) .card{padding:26px}body:not(.label-mode) .photo-panel{margin:20px auto}}
+@media(max-width:350px){body:not(.label-mode) main{padding-left:14px;padding-right:14px}body:not(.label-mode) .intro h1{font-size:31px;letter-spacing:-1.3px}body:not(.label-mode) .card{padding:18px 16px}body:not(.label-mode) nav{font-size:10px}body:not(.label-mode) nav span{gap:3px;padding-left:3px;padding-right:3px}body:not(.label-mode) header .eyebrow{max-width:100px}body:not(.label-mode) .brand{font-size:22px;gap:6px}}
+@media(prefers-reduced-motion:reduce){body:not(.label-mode) :is(button,.button){transition:none}}
+
+/* WHY: put normal-mode controls right under the photo; leave the labeling layout alone. */
+body:not(.label-mode) #photoPanel .actions{display:none;padding:12px;margin:0;border-top:1px solid var(--line);background:#fff}
+body:not(.label-mode) main:has(#tapPanel:not([hidden])) #photoPanel .actions{display:grid}
+body:not(.label-mode) .unvalidated{display:block;font-size:11px;font-weight:650;color:#66552f;margin-bottom:8px}
+body:not(.label-mode) #manualChecklist{border:1px solid var(--line);border-radius:16px;background:#fff;margin-top:24px;padding:6px 16px}
+body:not(.label-mode) #manualChecklist>summary{min-height:52px;cursor:pointer;padding:14px 0;font-size:18px;font-weight:650}
+body:not(.label-mode) #manualCards .result-card{border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;box-shadow:none;padding:14px 0;margin:0}
+body:not(.label-mode) #manualCards .status{display:none}
+body:not(.label-mode) #manualCards h3{font-size:16px;margin:4px 0}
+body:not(.label-mode) #manualCards p{font-size:14px;margin:5px 0}
+body:not(.label-mode) #manualCards .why summary{min-height:44px}
+body:not(.label-mode) #mainActionBar{display:none}
+@media(max-width:600px){
+  /* WHY: leave room below the content so the fixed phone button does not sit on top of it. */
+  body:not(.label-mode) main{padding-bottom:calc(120px + env(safe-area-inset-bottom))}
+  body:not(.label-mode) #mainActionBar{display:block;position:fixed;z-index:10;left:0;right:0;bottom:0;background:#f7f8f5f5;border-top:1px solid #cbd9d0;padding:10px 18px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -4px 16px #163b350c}
+  body:not(.label-mode) #mainAction{width:100%;min-height:54px}
+}
+/* WHY: once a photo is loaded, make room for it and the controls, but keep the warning. */
+body:not(.label-mode) main:has(#photoPanel:not([hidden])) .intro,body:not(.label-mode) main:has(#photoPanel:not([hidden])) .privacy{display:none}
+/* WHY: the audit caught tiny brand and source links, even though the main buttons were big. */
+body:not(.label-mode) .brand,body:not(.label-mode) .why a{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
+body:not(.label-mode) #coatPanel button{margin-right:8px;margin-top:8px}
+body:not(.label-mode) .result-card li{font-size:15px;line-height:1.6;margin-bottom:8px}
+/* WHY: MULTI_TAP puts extra-tap controls under the labeling photo; OFF keeps the original layout. */
+body.label-mode.multi-tap #photoPanel .actions{display:none;padding:12px;margin:0;border-top:1px solid var(--line);background:white}
+body.label-mode.multi-tap main:has(#tapPanel:not([hidden])) #photoPanel .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+body.label-mode.multi-tap #confirmMask{grid-column:1/-1}
